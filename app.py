@@ -5,7 +5,7 @@ import re
 app = Flask(__name__)
 
 # Replace with your API Key from Elsevier Developer Portal
-API_KEY = 'd053e3cc5a91b8e6e31fedf5c4a30b86'
+API_KEY = 'your-api-key'
 
 def validate_api_key():
     """Check if the API key is valid by making a simple test request"""
