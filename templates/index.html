@@ -3,11 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scopus Document Search</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e74c3c'/%3E%3Ctext x='50' y='58' font-family='Arial,sans-serif' font-size='30' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Scopus Document Search - Professional Research Portal</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23764ba2;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23grad)'/%3E%3Ctext x='50' y='58' font-family='Arial,sans-serif' font-size='28' font-weight='600' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Modern Color Palette */
+            --primary-50: #f0f9ff;
+            --primary-100: #e0f2fe;
+            --primary-200: #bae6fd;
+            --primary-300: #7dd3fc;
+            --primary-400: #38bdf8;
+            --primary-500: #0ea5e9;
+            --primary-600: #0284c7;
+            --primary-700: #0369a1;
+            --primary-800: #075985;
+            --primary-900: #0c4a6e;
+            
+            --secondary-50: #fefce8;
+            --secondary-100: #fef9c3;
+            --secondary-200: #fef08a;
+            --secondary-300: #fde047;
+            --secondary-400: #facc15;
+            --secondary-500: #eab308;
+            --secondary-600: #ca8a04;
+            --secondary-700: #a16207;
+            --secondary-800: #854d0e;
+            --secondary-900: #713f12;
+            
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            
+            --success-50: #f0fdf4;
+            --success-500: #22c55e;
+            --success-600: #16a34a;
+            
+            --warning-50: #fffbeb;
+            --warning-500: #f59e0b;
+            --warning-600: #d97706;
+            
+            --error-50: #fef2f2;
+            --error-500: #ef4444;
+            --error-600: #dc2626;
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-normal: 200ms ease;
+            --transition-slow: 300ms ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,27 +92,31 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #212529;
-            line-height: 1.5;
-            font-size: 14px;
+            font-family: var(--font-primary);
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--primary-50) 100%);
+            color: var(--gray-900);
+            line-height: 1.6;
+            font-size: 15px;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Header matching actual Scopus style */
+        /* Header */
         .header {
-            background: #ffffff;
-            border-bottom: 1px solid #dee2e6;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 12px 16px;
+            padding: var(--space-lg) var(--space-xl);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -44,82 +125,126 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .logo h1 {
-            font-family: 'Nexus Sans', 'Inter', sans-serif;
-            font-size: 28px;
-            font-weight: 400;
-            color: #e74c3c;
-            letter-spacing: -0.5px;
+            gap: var(--space-lg);
         }
 
         .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-size: 24px;
-            color: #e74c3c;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .logo-text h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-800) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
 
         .tagline {
-            font-size: 11px;
-            color: #6c757d;
-            font-weight: 400;
-            margin-top: 2px;
+            font-size: 13px;
+            color: var(--gray-500);
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.05em;
+            margin-top: var(--space-xs);
+        }
+
+        .header-stats {
+            display: flex;
+            gap: var(--space-lg);
+            font-size: 13px;
+            color: var(--gray-600);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            font-weight: 500;
         }
 
         /* Main container */
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 32px 16px;
+            padding: var(--space-2xl) var(--space-xl);
         }
 
-        /* Search section matching Scopus layout */
+        /* Search section */
         .search-section {
-            background: #ffffff;
-            border-radius: 8px;
-            margin-bottom: 32px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-2xl);
+            box-shadow: var(--shadow-lg);
             overflow: hidden;
+            border: 1px solid var(--gray-200);
         }
 
         .search-header {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            padding: 24px 32px;
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+            padding: var(--space-2xl);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .search-header-content {
+            position: relative;
+            z-index: 1;
         }
 
         .search-header h2 {
-            color: #ffffff;
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: var(--space-lg);
+            letter-spacing: -0.01em;
         }
 
         .search-header p {
-            color: rgba(255,255,255,0.9);
-            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
             font-weight: 400;
+            max-width: 600px;
         }
 
         .search-content {
-            padding: 32px;
+            padding: var(--space-2xl);
         }
 
         /* Search forms */
-        .search-form {
-            display: block;
-        }
-
         .form-row {
             display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
             align-items: end;
         }
 
@@ -129,118 +254,160 @@
 
         .form-label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #495057;
+            margin-bottom: var(--space-md);
+            font-weight: 600;
+            color: var(--gray-700);
             font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .form-input {
             width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #ced4da;
-            border-radius: 6px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: all 0.2s ease;
-            background-color: #ffffff;
-            height: 48px;
+            padding: var(--space-lg) var(--space-xl);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            font-size: 16px;
+            font-family: var(--font-mono);
+            font-weight: 500;
+            transition: all var(--transition-normal);
+            background: var(--gray-50);
+            height: 56px;
+            color: var(--gray-800);
         }
 
         .form-input:focus {
             outline: none;
-            border-color: #e74c3c;
-            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+            border-color: var(--primary-500);
+            background: white;
+            box-shadow: 0 0 0 4px var(--primary-100);
+            transform: translateY(-1px);
+        }
+
+        .form-input::placeholder {
+            color: var(--gray-400);
+            font-weight: 400;
         }
 
         .search-button {
-            padding: 12px 32px;
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            padding: var(--space-lg) var(--space-2xl);
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
             color: white;
             border: none;
-            border-radius: 6px;
-            font-size: 14px;
+            border-radius: var(--radius-lg);
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all var(--transition-normal);
             display: flex;
             align-items: center;
-            gap: 8px;
-            min-width: 140px;
+            gap: var(--space-md);
+            min-width: 160px;
             justify-content: center;
-            height: 48px;
-            font-family: inherit;
+            height: 56px;
+            font-family: var(--font-primary);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .search-button:hover::before {
+            left: 100%;
         }
 
         .search-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+        }
+
+        .search-button:active {
+            transform: translateY(0);
         }
 
         .search-button:disabled {
-            opacity: 0.6;
+            opacity: 0.7;
             cursor: not-allowed;
             transform: none;
+            background: var(--gray-400);
         }
 
         /* Examples section */
         .examples {
-            background: #f8f9fa;
-            padding: 20px 24px;
-            border-radius: 6px;
-            margin-top: 24px;
-            border-left: 4px solid #e74c3c;
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--primary-50) 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-xl);
+            border: 1px solid var(--primary-200);
+            position: relative;
         }
 
         .examples h4 {
-            color: #495057;
-            margin-bottom: 12px;
-            font-size: 13px;
-            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: var(--space-lg);
+            font-size: 14px;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--space-md);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .example-item {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             background: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            margin: 4px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid #dee2e6;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            margin: var(--space-sm);
+            font-size: 14px;
+            font-family: var(--font-mono);
             font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            border: 2px solid var(--gray-200);
+            color: var(--gray-700);
         }
 
         .example-item:hover {
-            background: #e74c3c;
+            background: var(--primary-600);
             color: white;
-            border-color: #e74c3c;
-            transform: translateY(-1px);
+            border-color: var(--primary-600);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
         /* Loading state */
         .loading {
             text-align: center;
-            padding: 60px;
-            color: #6c757d;
-            font-size: 16px;
+            padding: var(--space-2xl) * 2;
+            color: var(--gray-600);
+            font-size: 18px;
         }
 
         .spinner {
             display: inline-block;
-            width: 40px;
-            height: 40px;
-            border: 3px solid #f1f3f4;
-            border-top: 3px solid #e74c3c;
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--gray-200);
+            border-top: 4px solid var(--primary-600);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+            margin-bottom: var(--space-xl);
         }
 
         @keyframes spin {
@@ -248,242 +415,354 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Results section matching Scopus results */
+        /* Results section */
         .results-section {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
             overflow: hidden;
+            border: 1px solid var(--gray-200);
         }
 
         .results-header {
-            background: #f8f9fa;
-            padding: 20px 32px;
-            border-bottom: 1px solid #dee2e6;
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+            padding: var(--space-xl) var(--space-2xl);
+            border-bottom: 2px solid var(--gray-200);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .results-title {
-            font-size: 20px;
-            color: #495057;
-            font-weight: 600;
+            font-size: 22px;
+            color: var(--gray-800);
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: var(--space-lg);
+            letter-spacing: -0.01em;
         }
 
         .results-count {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 600;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            font-weight: 700;
             font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-md);
         }
 
         .results-content {
             padding: 0;
         }
 
-        /* Document cards matching Scopus style */
+        /* Document cards */
         .document-list {
             display: flex;
             flex-direction: column;
         }
 
         .document-card {
-            border-bottom: 1px solid #f1f3f4;
-            padding: 24px 32px;
-            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--gray-200);
+            padding: var(--space-2xl);
+            transition: all var(--transition-normal);
             background: white;
+            position: relative;
         }
 
         .document-card:hover {
-            background-color: #f8f9fa;
+            background: var(--gray-50);
+            transform: translateX(4px);
         }
 
         .document-card:last-child {
             border-bottom: none;
         }
 
+        .document-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .document-card:hover::before {
+            opacity: 1;
+        }
+
         .document-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #e74c3c;
-            margin-bottom: 16px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-700);
+            margin-bottom: var(--space-lg);
             line-height: 1.4;
             cursor: pointer;
             text-decoration: none;
+            letter-spacing: -0.01em;
+            transition: color var(--transition-normal);
         }
 
         .document-title:hover {
+            color: var(--primary-600);
             text-decoration: underline;
         }
 
         .document-meta {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            margin-bottom: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
             font-size: 14px;
         }
 
         .meta-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            color: #6c757d;
+            gap: var(--space-md);
+            color: var(--gray-600);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
         }
 
         .meta-icon {
-            color: #adb5bd;
-            width: 16px;
+            color: var(--primary-600);
+            width: 18px;
             flex-shrink: 0;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .meta-label {
-            font-weight: 600;
-            color: #6c757d;
-            min-width: 70px;
+            font-weight: 700;
+            color: var(--gray-700);
+            min-width: 80px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.05em;
         }
 
         .meta-value {
-            color: #495057;
-            font-weight: 400;
+            color: var(--gray-800);
+            font-weight: 500;
+            flex: 1;
         }
 
         .doi-link {
-            color: #e74c3c;
+            color: var(--primary-600);
             text-decoration: none;
             word-break: break-all;
-            font-weight: 500;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            font-size: 13px;
         }
 
         .doi-link:hover {
             text-decoration: underline;
+            color: var(--primary-700);
         }
 
         .abstract {
-            background: #f8f9fa;
-            padding: 16px 20px;
-            border-radius: 6px;
-            margin-top: 16px;
-            color: #495057;
-            line-height: 1.6;
-            font-size: 14px;
-            border-left: 4px solid #e9ecef;
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--primary-50) 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-lg);
+            color: var(--gray-700);
+            line-height: 1.7;
+            font-size: 15px;
+            border: 1px solid var(--primary-200);
+            position: relative;
+        }
+
+        .abstract::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
         }
 
         .abstract strong {
-            color: #343a40;
-            font-weight: 600;
+            color: var(--gray-800);
+            font-weight: 700;
         }
 
         /* Error messages */
         .error-message {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            border-radius: 6px;
-            padding: 20px 24px;
-            color: #721c24;
+            background: linear-gradient(135deg, var(--error-50) 0%, #fef2f2 100%);
+            border: 2px solid var(--error-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            color: var(--error-700);
             text-align: center;
-            margin: 24px 0;
-            font-size: 14px;
+            margin: var(--space-xl) 0;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: var(--shadow-md);
         }
 
         .no-results {
             text-align: center;
-            padding: 60px;
-            color: #6c757d;
-            font-size: 16px;
+            padding: var(--space-2xl) * 2;
+            color: var(--gray-600);
+            font-size: 18px;
         }
 
         .no-results i {
-            font-size: 64px;
-            margin-bottom: 24px;
-            color: #dee2e6;
+            font-size: 80px;
+            margin-bottom: var(--space-xl);
+            color: var(--gray-300);
+            background: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-400) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .no-results h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-            font-weight: 600;
-            color: #495057;
+            font-size: 24px;
+            margin-bottom: var(--space-lg);
+            font-weight: 700;
+            color: var(--gray-700);
+            letter-spacing: -0.01em;
         }
 
         .no-results p {
-            font-size: 14px;
-            color: #6c757d;
+            font-size: 16px;
+            color: var(--gray-500);
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         /* Responsive design */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .container {
-                padding: 20px 12px;
+                padding: var(--space-xl) var(--space-lg);
             }
             
-            .search-content {
-                padding: 24px 20px;
-            }
-            
-            .search-header {
-                padding: 20px;
+            .search-content, .search-header {
+                padding: var(--space-xl);
             }
             
             .results-header {
-                padding: 16px 20px;
+                padding: var(--space-lg) var(--space-xl);
             }
             
             .document-card {
-                padding: 20px;
+                padding: var(--space-xl);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: var(--space-lg);
+                flex-direction: column;
+                gap: var(--space-lg);
+                text-align: center;
+            }
+            
+            .header-stats {
+                order: -1;
+            }
+            
+            .container {
+                padding: var(--space-lg);
             }
             
             .form-row {
                 flex-direction: column;
-                gap: 12px;
+                gap: var(--space-lg);
             }
             
             .document-meta {
                 grid-template-columns: 1fr;
-                gap: 12px;
+                gap: var(--space-md);
             }
             
             .results-header {
                 flex-direction: column;
-                gap: 12px;
+                gap: var(--space-lg);
                 text-align: center;
+            }
+            
+            .search-header h2 {
+                font-size: 24px;
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-md);
             }
         }
 
         @media (max-width: 480px) {
-            .header-content {
-                padding: 12px;
-            }
-            
-            .logo h1 {
-                font-size: 24px;
+            .logo-text h1 {
+                font-size: 28px;
             }
             
             .container {
-                padding: 16px 8px;
+                padding: var(--space-md);
             }
             
-            .search-content {
-                padding: 20px 16px;
+            .search-content, .search-header {
+                padding: var(--space-lg);
             }
             
             .document-card {
-                padding: 16px;
+                padding: var(--space-lg);
             }
             
-            .search-header {
-                padding: 16px;
+            .examples {
+                padding: var(--space-lg);
             }
+            
+            .example-item {
+                font-size: 13px;
+                padding: var(--space-sm) var(--space-md);
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-600) 100%);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--primary-200);
+            color: var(--primary-900);
+        }
+
+        /* Focus indicators */
+        .search-button:focus-visible {
+            outline: 2px solid var(--primary-600);
+            outline-offset: 2px;
+        }
+
+        .example-item:focus-visible {
+            outline: 2px solid var(--primary-600);
+            outline-offset: 2px;
         }
     </style>
 </head>
@@ -492,10 +771,26 @@
     <div class="header">
         <div class="header-content">
             <div class="logo">
-                <i class="fas fa-search logo-icon"></i>
-                <div>
+                <div class="logo-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="logo-text">
                     <h1>Scopus</h1>
-                    <div class="tagline">Abstract and Citation Database</div>
+                    <div class="tagline">Professional Research Database</div>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <i class="fas fa-database"></i>
+                    <span>90M+ Papers</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <span>25M+ Authors</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Real-time</span>
                 </div>
             </div>
         </div>
@@ -506,8 +801,10 @@
         <!-- Search Section -->
         <div class="search-section">
             <div class="search-header">
-                <h2><i class="fas fa-search"></i> Document Search</h2>
-                <p>Find publications by author using Scopus Author ID</p>
+                <div class="search-header-content">
+                    <h2><i class="fas fa-search"></i>Advanced Document Search</h2>
+                    <p>Discover high-quality research publications using precise Scopus Author ID matching. Access comprehensive bibliometric data from the world's largest abstract and citation database.</p>
+                </div>
             </div>
             
             <div class="search-content">
@@ -525,10 +822,12 @@
                         </button>
                     </div>
                     <div class="examples">
-                        <h4><i class="fas fa-lightbulb"></i> Try these example Author IDs:</h4>
-                        <span class="example-item" onclick="setExample('authorId', '58907937200')">58907937200</span>
-                        <span class="example-item" onclick="setExample('authorId', '7004212771')">7004212771</span>
-                        <span class="example-item" onclick="setExample('authorId', '35079293200')">35079293200</span>
+                        <h4><i class="fas fa-lightbulb"></i>Try Example Author IDs</h4>
+                        <span class="example-item" onclick="setExample('authorId', '58907937200')" tabindex="0">58907937200</span>
+                        <span class="example-item" onclick="setExample('authorId', '7004212771')" tabindex="0">7004212771</span>
+                        <span class="example-item" onclick="setExample('authorId', '35079293200')" tabindex="0">35079293200</span>
+                        <span class="example-item" onclick="setExample('authorId', '24170707600')" tabindex="0">24170707600</span>
+                        <span class="example-item" onclick="setExample('authorId', '55567912600')" tabindex="0">55567912600</span>
                     </div>
                 </div>
             </div>
@@ -537,7 +836,7 @@
         <!-- Loading State -->
         <div id="loading" class="loading" style="display: none;">
             <div class="spinner"></div>
-            <p>Searching for documents...</p>
+            <p>Searching comprehensive database...</p>
         </div>
 
         <!-- Results Section -->
@@ -568,23 +867,16 @@
             const loading = document.getElementById('loading');
             const results = document.getElementById('results');
             const error = document.getElementById('error');
-            
-            // Get the current search button
             currentSearchButton = event.target;
-            
-            // Reset UI
             loading.style.display = 'block';
             results.style.display = 'none';
             error.style.display = 'none';
             currentSearchButton.disabled = true;
             currentSearchButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
-            
-            // Prepare search data for author ID only
             let searchData = { 
                 search_type: 'author_id',
                 author_id: document.getElementById('authorIdInput').value.trim()
             };
-            
             try {
                 const response = await fetch('/search', {
                     method: 'POST',
@@ -593,9 +885,7 @@
                     },
                     body: JSON.stringify(searchData)
                 });
-                
                 const data = await response.json();
-                
                 if (data.success) {
                     displayResults(data.documents, data.total_count);
                 } else {
@@ -609,14 +899,12 @@
                 currentSearchButton.innerHTML = '<i class="fas fa-search"></i> Search';
             }
         }
-        
+
         function displayResults(documents, totalCount) {
             const results = document.getElementById('results');
             const resultsCount = document.getElementById('resultsCount');
             const documentList = document.getElementById('documentList');
-            
             resultsCount.textContent = `${totalCount} document${totalCount !== 1 ? 's' : ''}`;
-            
             if (documents.length === 0) {
                 documentList.innerHTML = `
                     <div class="no-results">
@@ -668,23 +956,22 @@
                     </div>
                 `).join('');
             }
-            
             results.style.display = 'block';
             results.scrollIntoView({ behavior: 'smooth' });
         }
-        
+
         function openDOI(doi) {
             if (doi && doi !== 'N/A') {
                 window.open(`https://doi.org/${doi}`, '_blank');
             }
         }
-        
+
         function showError(message) {
             const error = document.getElementById('error');
             error.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
             error.style.display = 'block';
         }
-        
+
         // Auto-focus on the input field when page loads
         window.addEventListener('load', function() {
             document.getElementById('authorIdInput').focus();
